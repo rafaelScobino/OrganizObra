@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrganizObra</title>
+    <script src="main.js"></script>
+</head>
+<body>
+    <h1>OrganizObra</h1>
+    <div name="inputFunc" id="inputFunc">
+        <h2>Informações de Funcionários</h2>
+            <form id="info">
+                <label for="name">Nome: </label>
+                <br>               
+                    <input type="text" name="name" id="name">
+                <br><br>
+                <label for="pix">Pix: </label>
+                <br>
+                    <input type="text" name="pix" id="pix">
+                <br>
+                    <input type="radio" name="pix" id="cpf" value="cpf">
+                        <label for="cpf">CPF</label> <br>
+                    <input type="radio" name="pix" id="telefone" value="telefone">
+                        <label for="telefone">Telefone</label> <br>
+                    <input type="radio" name="pix" id="email" value="email">
+                        <label for="email">E-mail</label> <br>
+                    <input type="radio" name="pix" id="chave" value="chave">
+                        <label for="chave">Chave Aleatórioa</label> <br>
+                <br>
+                <label for="funcao">Função: </label>
+                    <select name="funcao" id="funcao">
+                        <option value="pedreiro">Pedreiro</option>
+                        <option value="encarregado">Encarregado</option>
+                        <option value="ajudante">Ajudante</option>
+                        <option value="eletricista">Eletricista</option>
+                        </select>
+                <br><br>
+                <label for="valordia">Valor da diaria: </label>
+                    <input type="text" id="valordia" name="valordia" oninput="formatoMoeda(this)">
+                <br><br>
+<!-- O metodo usado para contar os dias trabalhados será melhorado (versão tapa buraco)-->
+                <label for="dias">Dias Trabalhados</label>
+                    <input type="number" name="dias" id="dias" value="dias" oninput="quinzenaMoeda()">
+                <br><br>
+<!-- Total quinzenal provisório-->
+                <label for="totalq">Total Quinzena: </label>
+                    <input readonly type="text" name="totalq" id="totalq">
+            </form>
+    </div>
+    <div name="tablePag" id="tablePag">
+        <table>
+
+        </table>
+    </div>
+
+</body>
+</html>
