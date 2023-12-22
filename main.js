@@ -20,17 +20,52 @@ function quinzenaMoeda() {
         currency: 'BRL'})
     }
 //Automatizando Tabelas com Inputs - Necessita Otimização
-const funcionario = []
+var funcionario = []
+var counter = 1
+var zero = 0
 
-function onSubmitFuncionario(){
+function onSubmitFuncionario(event){
+    event.preventDefault();
     nome = document.getElementById('name').value;
     pix = document.getElementById('pix').value;
-    tipoPix = document.getElementById('tipoPix').value;
+    tipoPix = document.querySelector('input[name="tipoPix"]:checked').value;
     funcao = document.getElementById('funcao').value;
     valDia = document.getElementById('valorDia').value;
     dias = document.getElementById('dias').value;
-    totalQ = document.getElementById('totalQ');
+   totalQ = document.getElementById('totalQ').value;
+        funcionario.push(nome);
+        funcionario.push(pix);
+        funcionario.push(tipoPix);
+        funcionario.push(funcao);
+        funcionario.push(valDia);
+        funcionario.push(dias);
+        funcionario.push(totalQ);
+    console.log(funcionario)
+}
 
+function updateTable(){
+    console.log(funcionario)
+    const tr = document.createElement('tr');
+        tr.setAttribute('id','linha'+counter)
+            document.getElementById('tablePag').appendChild(tr);
+    funcionario.forEach(i => {
+         const td = document.createElement('td');
+            td.innerHTML=i;
+                document.getElementById('linha'+counter).appendChild(td);
+    });
+    funcionario=[];
+    counter++;
+    document.getElementById('name').value = '';
+    document.getElementById('pix').value = '';
+    document.getElementById('funcao').value = '';
+    document.getElementById('valorDia').value = '';
+    document.getElementById('dias').value = '';
+    document.getElementById('totalQ').value = '';
+    document.getElementById('name').focus();
 }
 
 
+function submitTable(event){
+    onSubmitFuncionario(event);
+    updateTable();
+}

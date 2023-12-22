@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrganizObra</title>
-    <script src="main.js"></script>
+    <script defer src="main.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,13 +20,13 @@
                 <br>
                     <input type="text" name="pix" id="pix">
                 <br>
-                    <input type="radio" name="tipopix" id="cpf" value="cpf">
+                    <input type="radio" name="tipoPix" id="cpf" value="CPF">
                         <label for="cpf">CPF</label> <br>
-                    <input type="radio" name="tipoPix" id="telefone" value="telefone">
+                    <input type="radio" name="tipoPix" id="telefone" value="Telefone">
                         <label for="telefone">Telefone</label> <br>
-                    <input type="radio" name="tipoPix" id="email" value="email">
+                    <input type="radio" name="tipoPix" id="email" value="E-mail">
                         <label for="email">E-mail</label> <br>
-                    <input type="radio" name="tipoPix" id="chave" value="chave">
+                    <input type="radio" name="tipoPix" id="chave" value="Chave Aleatória">
                         <label for="chave">Chave Aleatória</label> <br>
                 <br>
                 <label for="funcao">Função: </label>
@@ -48,7 +48,7 @@
                 <label for="totalQ">Total Quinzena: </label>
                     <input readonly type="text" name="totalQ" id="totalQ">
                 <br><br>
-                <button type="submit" name="entradaFunc1" id="entradaFunc1">Salvar</button>
+                <button type="submit" name="entradaFunc1" id="entradaFunc1" onclick="submitTable(event)">Salvar</button>
             </form>
     </div>
     <div name="tableFront" id="tableFront">
@@ -58,13 +58,10 @@
                 <th>Nome</th>
                 <th>Função</th>
                 <th>Pix</th>
+                <th>Tipo de Pix</th>
                 <th>Valor Diária</th>
                 <th>Dias Trabalhados</th>
                 <th>Total Quinzena</th>
-            </tr>
-            <tr>
-                <td>Teste 1</td>
-                <td>Teste 2</td>
             </tr>
         </table>
     </div>
