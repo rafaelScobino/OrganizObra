@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrganizObra</title>
     <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>OrganizObra</h1>
@@ -19,14 +20,14 @@
                 <br>
                     <input type="text" name="pix" id="pix">
                 <br>
-                    <input type="radio" name="pix" id="cpf" value="cpf">
+                    <input type="radio" name="tipopix" id="cpf" value="cpf">
                         <label for="cpf">CPF</label> <br>
-                    <input type="radio" name="pix" id="telefone" value="telefone">
+                    <input type="radio" name="tipoPix" id="telefone" value="telefone">
                         <label for="telefone">Telefone</label> <br>
-                    <input type="radio" name="pix" id="email" value="email">
+                    <input type="radio" name="tipoPix" id="email" value="email">
                         <label for="email">E-mail</label> <br>
-                    <input type="radio" name="pix" id="chave" value="chave">
-                        <label for="chave">Chave Aleatórioa</label> <br>
+                    <input type="radio" name="tipoPix" id="chave" value="chave">
+                        <label for="chave">Chave Aleatória</label> <br>
                 <br>
                 <label for="funcao">Função: </label>
                     <select name="funcao" id="funcao">
@@ -36,21 +37,35 @@
                         <option value="eletricista">Eletricista</option>
                         </select>
                 <br><br>
-                <label for="valordia">Valor da diaria: </label>
-                    <input type="text" id="valordia" name="valordia" oninput="formatoMoeda(this)">
+                <label for="valorDia">Valor da diaria: </label>
+                    <input type="text" id="valorDia" name="valorDia" oninput="formatoMoeda(this)">
                 <br><br>
 <!-- O metodo usado para contar os dias trabalhados será melhorado (versão tapa buraco)-->
                 <label for="dias">Dias Trabalhados</label>
                     <input type="number" name="dias" id="dias" value="dias" oninput="quinzenaMoeda()">
                 <br><br>
 <!-- Total quinzenal provisório-->
-                <label for="totalq">Total Quinzena: </label>
-                    <input readonly type="text" name="totalq" id="totalq">
+                <label for="totalQ">Total Quinzena: </label>
+                    <input readonly type="text" name="totalQ" id="totalQ">
+                <br><br>
+                <button type="submit" name="entradaFunc1" id="entradaFunc1">Salvar</button>
             </form>
     </div>
-    <div name="tablePag" id="tablePag">
-        <table>
-
+    <div name="tableFront" id="tableFront">
+        <br><br>
+        <table name="tablePag" id="tablePag">
+            <tr id="trPag">
+                <th>Nome</th>
+                <th>Função</th>
+                <th>Pix</th>
+                <th>Valor Diária</th>
+                <th>Dias Trabalhados</th>
+                <th>Total Quinzena</th>
+            </tr>
+            <tr>
+                <td>Teste 1</td>
+                <td>Teste 2</td>
+            </tr>
         </table>
     </div>
 

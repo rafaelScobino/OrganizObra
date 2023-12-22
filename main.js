@@ -11,15 +11,26 @@ function formatoMoeda(input) {
     })
 }
 function quinzenaMoeda() {
-    let diaria = document.getElementById('valordia').value
+    let diaria = document.getElementById('valorDia').value
         diaria = numValue(diaria)
     let dia = parseFloat(document.getElementById('dias').value)
             total = diaria * dia;
-    document.getElementById('totalq').value = (total/100).toLocaleString('pt-BR', {
+    document.getElementById('totalQ').value = (total/100).toLocaleString('pt-BR', {
         style: 'currency',
         currency: 'BRL'})
     }
-    
+//Automatizando Tabelas com Inputs - Necessita Otimização
+const funcionario = []
 
+function onSubmitFuncionario(){
+    nome = document.getElementById('name').value;
+    pix = document.getElementById('pix').value;
+    tipoPix = document.getElementById('tipoPix').value;
+    funcao = document.getElementById('funcao').value;
+    valDia = document.getElementById('valorDia').value;
+    dias = document.getElementById('dias').value;
+    totalQ = document.getElementById('totalQ');
+
+}
 
 
