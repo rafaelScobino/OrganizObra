@@ -22,24 +22,23 @@ function quinzenaMoeda() {
 //Automatizando Tabelas com Inputs - Necessita Otimização
 var funcionario = []
 var counter = 1
-var zero = 0
 
 function onSubmitFuncionario(event){
     event.preventDefault();
     nome = document.getElementById('name').value;
-    pix = document.getElementById('pix').value;
-    tipoPix = document.querySelector('input[name="tipoPix"]:checked').value;
     funcao = document.getElementById('funcao').value;
     valDia = document.getElementById('valorDia').value;
     dias = document.getElementById('dias').value;
-   totalQ = document.getElementById('totalQ').value;
+    totalQ = document.getElementById('totalQ').value;
+    pix = document.getElementById('pix').value;
+    tipoPix = document.querySelector('input[name="tipoPix"]:checked').value;
         funcionario.push(nome);
-        funcionario.push(pix);
-        funcionario.push(tipoPix);
         funcionario.push(funcao);
         funcionario.push(valDia);
         funcionario.push(dias);
         funcionario.push(totalQ);
+        funcionario.push(pix);
+        funcionario.push(tipoPix);
     console.log(funcionario)
 }
 
@@ -63,7 +62,6 @@ function updateTable(){
     document.getElementById('totalQ').value = '';
     document.getElementById('name').focus();
 }
-
 
 function submitTable(event){
     onSubmitFuncionario(event);
