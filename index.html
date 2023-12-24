@@ -10,9 +10,17 @@
 <body>
     <h1>OrganizObra</h1>
     <nav></nav>
-    <div name="inputFunc" id="inputFunc">
+    <div name="inputFuncionario" id="inputFuncionario">
         <h2>Informações de Funcionários</h2>
             <form id="info">
+                <label for="obraSelect">Obra: </label>
+                    <select name="obraSelect" id="obraSelect">
+                        <option value="Teste">Teste</option>
+                    </select>
+                <br>
+                <label id="newObraLabel" for="newObra">Nova obra: </label>
+                    <input type="text" name="newObra" id="newObra">
+                <br><br>
                 <label for="name">Nome: </label>
                 <br>               
                     <input type="text" name="name" id="name">
@@ -36,7 +44,7 @@
                         <option value="Encarregado">Encarregado</option>
                         <option value="Ajudante">Ajudante</option>
                         <option value="Eletricista">Eletricista</option>
-                        </select>
+                    </select>
                 <br><br>
                 <label for="valorDia">Valor da diaria: </label>
                     <input type="text" id="valorDia" name="valorDia" oninput="formatoMoeda(this)">
