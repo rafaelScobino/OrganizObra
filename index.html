@@ -15,7 +15,7 @@
             <form id="info">
                 <label for="obraSelect">Obra: </label>
                     <select name="obraSelect" id="obraSelect">
-                        <option value="Teste">Teste</option>
+                        
                     </select>
                 <br>
                 <label id="newObraLabel" for="newObra">Nova obra: </label>
@@ -24,6 +24,9 @@
                 <label for="name">Nome: </label>
                 <br>               
                     <input type="text" name="name" id="name">
+                <label id="funcionarioSelectLabel" for="funcionario">Funcionário:</label>
+                    <select name="funcionarioSelect" id="funcionarioSelect">        
+                    </select>
                 <br><br>
                 <label for="pix">Pix: </label>
                 <br>
@@ -45,6 +48,9 @@
                         <option value="Ajudante">Ajudante</option>
                         <option value="Eletricista">Eletricista</option>
                     </select>
+                <br>
+                <label id="newFuncaoLabel" for="newFuncao">Criar Função: </label>
+                    <input type="text" name="newFuncao" id="newFuncao">
                 <br><br>
                 <label for="valorDia">Valor da diaria: </label>
                     <input type="text" id="valorDia" name="valorDia" oninput="formatoMoeda(this)">
@@ -60,10 +66,12 @@
                 <button type="submit" name="entradaFunc1" id="entradaFunc1" onclick="submitTable(event)">Salvar</button>
             </form>
     </div>
-    <div name="tableFront" id="tableFront">
+    <div name="tables" id="tables">
         <br><br>
         <table name="tablePag" id="tablePag">
-            <tr id="trPag">
+            <tr id="headObra"><th colspan="8">Tabela Total Geral</th></tr>
+            <tr id="headRow">
+                <th>Obra</th>
                 <th>Nome</th>
                 <th>Função</th>
                 <th>Valor Diária</th>
@@ -73,6 +81,7 @@
                 <th>Tipo de Pix</th>
             </tr>
         </table>
+        <br><br>
     </div>
 
 </body>

@@ -1,8 +1,15 @@
-#tablePag,#tableTotal ,th,td {
+/* Inputs/Form Style */
+#newObraLabel, #newFuncaoLabel{
+    padding-left: 40px;
+}
+
+#funcionarioSelectLabel {
+    padding-left: 10px;
+}
+
+/* Table Style */
+#tablePag, #headRow,#tableTotal ,th,td {
     border: 1px solid;
 }
 
-#newObraLabel, #newObra{
-    padding-left: 40px;
-}
 
