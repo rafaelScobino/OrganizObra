@@ -1,18 +1,22 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrganizObra</title>
-    <script defer src="main.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <script defer src="./../JavaScripts/mdo.js"></script>
+    <script src="./../components/navbar.component/navbar.component.js"></script>
+    <link rel="stylesheet" href="./../CSS/mdo.style.css">
 </head>
 <body>
-    <h1>OrganizObra</h1>
-    <nav></nav>
+    <nav-bar></nav-bar>
+    <h1 id="titulo">Mão de Obra</h1>
     <div name="inputFuncionario" id="inputFuncionario">
-        <h2>Informações de Funcionários</h2>
             <form id="info">
+                <label for="setQuiStart">Quinzena: </label>
+                    <input type="date" name="setQuiStart" id="setQuiStart">
+                    <input type="date" name="setQuiEnd" id="setQuiEnd">
+                    <br><br>
                 <label for="obraSelect">Obra: </label>
                     <select name="obraSelect" id="obraSelect">
                         
@@ -32,7 +36,7 @@
                 <br>
                     <input type="text" name="pix" id="pix">
                 <br>
-                    <input type="radio" name="tipoPix" id="cpf" value="CPF">
+                    <input checked type="radio" name="tipoPix" id="cpf" value="CPF">
                         <label for="cpf">CPF</label> <br>
                     <input type="radio" name="tipoPix" id="telefone" value="Telefone">
                         <label for="telefone">Telefone</label> <br>
@@ -46,6 +50,7 @@
                         <option value="Pedreiro">Pedreiro</option>
                         <option value="Encarregado">Encarregado</option>
                         <option value="Ajudante">Ajudante</option>
+                        <option value="Marceneiro">Marceneiro</option>
                         <option value="Eletricista">Eletricista</option>
                     </select>
                 <br>
@@ -69,7 +74,10 @@
     <div name="tables" id="tables">
         <br><br>
         <table name="tablePag" id="tablePag">
-            <tr id="headObra"><th colspan="8">Tabela Total Geral</th></tr>
+            <tr id="headObra">
+                <th colspan="4">Tabela Total Geral</th>
+                <th colspan="4" id="thQuinzenaGeral">Quinzena:</th>
+            </tr>
             <tr id="headRow">
                 <th>Obra</th>
                 <th>Nome</th>

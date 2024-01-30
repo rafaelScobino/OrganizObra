@@ -1,5 +1,8 @@
 //Variaveis Globais
-
+var funcionario = []
+var counter = 1
+quinzenaStart = document.getElementById('setQuiStart')
+quinzenaEnd = document.getElementById('setQuiEnd')
 
 //Função input currency e função totalq currency
 function numValue(valor){
@@ -24,14 +27,11 @@ function quinzenaMoeda() {
     }
 
 //Automatizando Tabelas com Inputs - Necessita Otimização
-var funcionario = []
-var counter = 1
-
 function onSubmitFuncionario(event){
     event.preventDefault();
     obra=obraInput();
     nome = document.getElementById('name').value;
-    funcao = document.getElementById('funcao').value;
+    funcao = funcaoInput();
     valDia = document.getElementById('valorDia').value;
     dias = document.getElementById('dias').value;
     totalQ = document.getElementById('totalQ').value;
@@ -56,15 +56,27 @@ function obraInput(){
     }
 }
 
+function funcaoInput(){
+    if (document.getElementById('newFuncao').value !=''){
+        return document.getElementById('newFuncao').value;
+    }else{
+        return document.getElementById('funcao').value;
+    }
+}
+
 function updateTable(){
+    quinzena = setQuinzena(document.getElementById('setQuiStart').value, document.getElementById('setQuiEnd').value );
+    obra = obraInput() 
+    idSetter = obra+quinzena
+
     console.log(funcionario)
-    console.log(obraInput())
+    console.log(obra)
     const tr = document.createElement('tr');
         tr.setAttribute('id','linha'+ counter)
     const tr2 = document.createElement('tr');
-        tr2.setAttribute('id','linha'+ obraInput() + counter)
+        tr2.setAttribute('id','linha'+ idSetter + counter)
             document.getElementById('tablePag').appendChild(tr);
-            document.getElementById(obraInput()).appendChild(tr2);
+            document.getElementById(idSetter).appendChild(tr2);
     funcionario.forEach(i => {
          const td = document.createElement('td');
             td.innerHTML=i;
@@ -74,7 +86,7 @@ function updateTable(){
     funcionario.forEach(i => {
         const td = document.createElement('td');
            td.innerHTML=i;
-               document.getElementById('linha'+ obraInput() + counter).appendChild(td);
+               document.getElementById('linha'+ idSetter + counter).appendChild(td);
    });
     funcionario=[];
     counter++;
@@ -82,62 +94,99 @@ function updateTable(){
     document.getElementById('name').value = '';
     document.getElementById('pix').value = '';
     document.getElementById('funcao').value = '';
+    document.getElementById('newFuncao').value = '';
     document.getElementById('valorDia').value = '';
     document.getElementById('dias').value = '';
     document.getElementById('totalQ').value = '';
     document.getElementById('name').focus();
 }
 
+function formatDateInput(dateInput){
+    var dateObj = new Date(dateInput + 'T00:00:00');
+
+    var day = dateObj.getDate().toString().padStart(2,'0');
+    var month = dateObj.toLocaleString('en-GB',{month: '2-digit'});
+    var year = dateObj.getFullYear().toString().slice(-2);
+
+    return day +  '-' + month + '-' + year
+}
+
+function setQuinzena(quinStart,quinEnd){
+    const start = formatDateInput(quinStart);
+    const end = formatDateInput(quinEnd);
+    const quinzena = start + " - " + end 
+    return quinzena
+}
+function setQuinzenaGeral(quinStart,quinEnd){
+    const quinzena = setQuinzena(quinStart,quinEnd);
+    const quinzenaTh = document.getElementById('thQuinzenaGeral')
+        quinzenaTh.innerHTML= "Quinzena: " + quinzena 
+}
+
 //Automação de tabelas por obra
 function newTable(){
     console.log('Inside newTable function');
-    obra = document.getElementById('newObra').value;
-    if (obra !=''){
+    quinzena = setQuinzena(document.getElementById('setQuiStart').value, document.getElementById('setQuiEnd').value );
+    obra = obraInput() 
+    checker = document.getElementById('newObra').value;
+    idSetter = obra+quinzena
+    if (checker !='' || quinzenaStart.value !== quinzenaStart.defaultValue || quinzenaEnd.value !== quinzenaEnd.defaultValue){
         const optObra = document.createElement('option');
             optObra.setAttribute('value', obra);
             optObra.innerHTML = obra;
                 document.getElementById('obraSelect').appendChild(optObra)
         const table = document.createElement('table');
-            table.setAttribute('id', obra)
-            table.setAttribute('name', obra)
+            table.setAttribute('id', idSetter)
+            table.setAttribute('name', idSetter)
                 document.getElementById('tables').appendChild(table)
         const newTrHead = document.createElement('tr');
-            newTrHead.setAttribute('id', obra + "headObra")
-                document.getElementById(obra).appendChild(newTrHead)
-        const th = document.createElement('th');
-            th.setAttribute('colspan',"8")
-            th.innerHTML = obra
-                document.getElementById(obra+'headObra').appendChild(th)
+            newTrHead.setAttribute('id', idSetter + "headObra")
+                document.getElementById(idSetter).appendChild(newTrHead)
+        const thTitulo = document.createElement('th');
+            thTitulo.setAttribute('colspan',"4")
+            thTitulo.innerHTML = obra
+                document.getElementById(idSetter+'headObra').appendChild(thTitulo)
+        const thQuinzena = document.createElement('th');
+            thQuinzena.setAttribute("colspan","4")
+            thQuinzena.innerHTML = "Quinzena: " + quinzena
+                document.getElementById(idSetter+'headObra').appendChild(thQuinzena)
         const newTr = document.createElement('tr');
-            newTr.setAttribute('id', obra + "headRow" )    
-                document.getElementById(obra).appendChild(newTr);
+            newTr.setAttribute('id', idSetter + "headRow" )    
+                document.getElementById(idSetter).appendChild(newTr);
 
         const nome = document.createElement('th');
+            nome.setAttribute('id',`${idSetter}: nome`)
             nome.innerHTML = 'Nome'
-                document.getElementById(obra+'headRow').appendChild(nome);
+                document.getElementById(idSetter+'headRow').appendChild(nome);
         const funcao = document.createElement('th');
+            funcao.setAttribute('id',`${idSetter}: funcao`)
             funcao.innerHTML = 'Função'
-                document.getElementById(obra+'headRow').appendChild(funcao);
+                document.getElementById(idSetter+'headRow').appendChild(funcao);
         const diaria = document.createElement('th');
+            diaria.setAttribute('id',`${idSetter}: diaria`)
             diaria.innerHTML = 'Valor Diária'
-                document.getElementById(obra+'headRow').appendChild(diaria);
+                document.getElementById(idSetter+'headRow').appendChild(diaria);
         const dias = document.createElement('th');
+            dias.setAttribute('id',`${idSetter}: dias`)
             dias.innerHTML = 'Dias Trabalhados'
-                document.getElementById(obra+'headRow').appendChild(dias);
+                document.getElementById(idSetter+'headRow').appendChild(dias);
         const totalQ = document.createElement('th');
+            totalQ.setAttribute('id',`${idSetter}: totalQ`)
             totalQ.innerHTML = 'Total Quinzena'
-                document.getElementById(obra+'headRow').appendChild(totalQ);
+                document.getElementById(idSetter+'headRow').appendChild(totalQ);
         const pix = document.createElement('th');
+            pix.setAttribute('id',`${idSetter}: pix`)
             pix.innerHTML = 'Pix'
-                document.getElementById(obra+'headRow').appendChild(pix);
+                document.getElementById(idSetter+'headRow').appendChild(pix);
         const tipoPix = document.createElement('th');
+            tipoPix.setAttribute('id',`${idSetter}: `)
             tipoPix.innerHTML = 'Tipo de pix'
-                document.getElementById(obra+'headRow').appendChild(tipoPix);
+                document.getElementById(idSetter+'headRow').appendChild(tipoPix);
 
         const br = document.createElement('br');
         const br2 = document.createElement('br');
-            document.getElementById(obra).insertAdjacentElement('afterend', br)
-            document.getElementById(obra).insertAdjacentElement('afterend', br2)
+            document.getElementById(idSetter).insertAdjacentElement('afterend', br)
+            document.getElementById(idSetter).insertAdjacentElement('afterend', br2)
     }else {
         return null;
     }
@@ -147,5 +196,6 @@ function newTable(){
 function submitTable(event){
     onSubmitFuncionario(event);
     newTable();
-    updateTable()
+    updateTable();
+    setQuinzenaGeral(quinzenaStart.value,quinzenaEnd.value)
 }

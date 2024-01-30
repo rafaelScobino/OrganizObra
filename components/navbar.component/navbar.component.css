@@ -1,0 +1,19 @@
+a{
+    color: black;
+    text-decoration: none;
+}
+
+.navBar_ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+.navBar_li{
+    font-size: larger;
+    margin-right: 10%;
+    list-style: none;
+}
