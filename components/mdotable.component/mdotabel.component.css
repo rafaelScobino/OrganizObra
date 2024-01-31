@@ -1,0 +1,12 @@
+#newObraLabel, #newFuncaoLabel{
+    padding-left: 40px;
+}
+
+#funcionarioSelectLabel {
+    padding-left: 10px;
+}
+
+/* Table Style */
+#tablePag, #headRow,#tableTotal ,th,td {
+    border: 1px solid;
+}

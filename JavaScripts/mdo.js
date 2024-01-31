@@ -192,6 +192,8 @@ function newTable(){
     }
 }
 
+//json storaging
+
 //Funções onSubmit
 function submitTable(event){
     onSubmitFuncionario(event);
