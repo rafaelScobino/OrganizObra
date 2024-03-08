@@ -4,7 +4,7 @@ class navBar extends HTMLElement{
 
         const shadow = this.attachShadow({mode:'open'})
         
-            fetch('/orgobra/components/navbar.component/navbar.component.html')
+            fetch('/OrganizObra/components/navbar.component/navbar.component.html')
                 .then(response => response.text())
                     .then( html => {shadow.innerHTML = html})
     }

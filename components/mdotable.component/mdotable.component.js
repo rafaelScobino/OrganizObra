@@ -5,7 +5,7 @@ class mdoTable extends HTMLElement{
         const shadow = this.attachShadow({mode: 'open'})
        
 
-        fetch('/orgobra/components/mdotable.component/mdotable.component.html')
+        fetch('/OrganizObra/components/mdotable.component/mdotable.component.html')
             .then(respone => respone.text())
             .then(html => {
                 shadow.innerHTML = html
